@@ -1,0 +1,33 @@
+.app {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+  font-size: 24px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+h2 {
+  margin-top: 20px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
