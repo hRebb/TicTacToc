@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import './App.css';
 
 type Player = 'X' | '0' | 'Draw' | '';
