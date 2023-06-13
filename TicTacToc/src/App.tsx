@@ -1,13 +1,14 @@
 import { useState } from 'react'
 import './App.css';
 
-type Player = 'X' | '0' | '';
+type Player = 'X' | '0' | 'Draw' | '';
 const initialBoard: Player[] = Array(9).fill('');
 
 const App = () => {
   const [board, setBoard] = useState<Player[]>(initialBoard);
   const [currentPlayer, setCurrentPlayer] = useState<Player>('X');
   const [winner, setWinner] = useState<Player>('');
+  const [movesPlayed, setMovesPlayed] = useState<number>(0);
 
   const handleCellClick = (index: number) => {
     if (board[index] !== '' || winner !== '') {
@@ -20,6 +21,7 @@ const App = () => {
 
     checkWinner(newBoard, currentPlayer);
     setCurrentPlayer(currentPlayer === 'X' ? '0' : 'X');
+    setMovesPlayed(movesPlayed + 1);
   };
 
   const checkWinner = (board: Player[], player: Player) => {
@@ -43,6 +45,10 @@ const App = () => {
         setWinner(player);
         break;
       }
+    }
+
+    if (movesPlayed === 8){
+      setWinner('Draw');
     }
   };
 
@@ -78,9 +84,15 @@ const App = () => {
       </h1>
       {winner ? (
         <div>
-          <h2>
-            Winner : {winner}
-          </h2>
+          {winner === 'Draw' ? (
+            <h2>
+              It's a draw !
+            </h2>
+          ) : (
+            <h2>
+              Winner : {winner}
+            </h2>
+          )}
           <button onClick={resetGame}>
             Play Again
           </button>
