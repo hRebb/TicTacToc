@@ -34,3 +34,7 @@ button {
   font-size: 16px;
   cursor: pointer;
 }
+
+.btn-sub {
+  background-color: silver;
+}

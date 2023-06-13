@@ -123,7 +123,7 @@ const App = () => {
               />
             </label>
             <br />
-            <button type='submit'>Start Game</button>
+            <button className='btn-sub' type='submit'>Start Game</button>
           </form>
         </div>
       ) : (
@@ -135,7 +135,7 @@ const App = () => {
               ) : (
                 <h2>Winner: {winner === 'X' ? playerX : player0}</h2>
               )}
-              <button onClick={resetGame}>Play Again</button>
+              <button className='btn-sub' onClick={resetGame}>Play Again</button>
             </div>
           ) : (
             <>
