@@ -12,6 +12,7 @@ const App = () => {
   const [playerX, setPlayerX] = useState<string>('');
   const [player0, setPlayer0] = useState<string>('');
   const [isGameStarted, setIsGameStarted] = useState<boolean>(false);
+  const [, setIsGameOver] = useState<boolean>(false);
 
   const handleCellClick = (index: number) => {
     if (board[index] !== '' || winner !== '') {
@@ -81,6 +82,8 @@ const App = () => {
     setMovesPlayed(0);
     setPlayerX('');
     setPlayer0('');
+    setIsGameStarted(false);
+    setIsGameOver(false);
   };
 
   const startGame = (event: React.FormEvent) => {
