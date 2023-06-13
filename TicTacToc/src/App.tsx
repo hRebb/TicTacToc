@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css';
 
 type Player = 'X' | '0' | '';
-const initialBoard: Player[] = Array(16).fill('');
+const initialBoard: Player[] = Array(9).fill('');
 
 const App = () => {
   const [board, setBoard] = useState<Player[]>(initialBoard);
@@ -23,32 +23,26 @@ const App = () => {
   };
 
   const checkWinner = (board: Player[], player: Player) => {
-    if (
-      (board[0] === player && board[1] === player && board[2] === player && board[3] === player) ||
-      (board[4] === player && board[5] === player && board[6] === player && board[7] === player) ||
-      (board[8] === player && board[9] === player && board[10] === player && board[11] === player) ||
-      (board[12] === player && board[13] === player && board[14] === player && board[15] === player)
-    ) {
-      setWinner(player);
-      return;
-    }
-  
-    if (
-      (board[0] === player && board[4] === player && board[8] === player && board[12] === player) ||
-      (board[1] === player && board[5] === player && board[9] === player && board[13] === player) ||
-      (board[2] === player && board[6] === player && board[10] === player && board[14] === player) ||
-      (board[3] === player && board[7] === player && board[11] === player && board[15] === player)
-    ) {
-      setWinner(player);
-      return;
-    }
+    const winningCombinations = [
+       // Lines
+      [0,1,2],
+      [3,4,5],
+      [6,7,8],
+       // Columns
+       [0,3,6],
+       [1,4,7],
+       [2,5,8],
+       // Diagonals
+       [0,4,8],
+       [2,4,6],
+    ];
 
-    if (
-      (board[0] === player && board[5] === player && board[10] === player && board[15] === player) ||
-      (board[3] === player && board[6] === player && board[9] === player && board[12] === player)
-    ) {
-      setWinner(player);
-      return;
+    for (const combination of winningCombinations) {
+      const [a, b, c] = combination;
+      if (board[a] === player && board[b] === player && board[c] === player) {
+        setWinner(player);
+        break;
+      }
     }
   };
 
