@@ -1,7 +1,9 @@
+/*
 .app {
   text-align: center;
   margin-top: 50px;
   width: 670px;
+  width: 1358px;
 }
 
 .board {
@@ -10,6 +12,23 @@
   grid-gap: 10px;
   width: 300px;
   margin: 0 auto;
+}
+*/
+
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  width: 300px;
+  margin: 20px auto;
 }
 
 .cell {
